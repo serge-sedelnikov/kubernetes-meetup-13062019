@@ -52,4 +52,29 @@ sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.0
 
 ## Kubectl deployment
 
-See `deployment.yaml` file for deployment details.
+See `deployment.yaml` file for deployment details. 
+
+It creates API from the image we specified above, sets environment variables for `NODE_ENV` and `PORT` to be havin production values (`"production"` for `NODE_ENV` and `80` for `PORT`).
+
+Also it tells Kubernetes to run 3 replicas of API for load balancing.
+
+Notice last part for `service` creation from the described `deployment`
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-demo
+  labels:
+    name: api-demo
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: api-demo
+```
+
+`type: LoadBalancer` tells Kubernetes to create a public IP address for this service and expose it to outside world.
+
+`ports` and `selector` would tell to Kubernetes to map port `80` to port `80` for deployment with label `app: api-demo`. Notice this label at the deployment section.

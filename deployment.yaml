@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-demo
-          image: seipadockerregistryprod.azurecr.io/cabinet/rootapi:1.4.1
+          image: sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.0
           resources:
             requests:
               cpu: 70m
