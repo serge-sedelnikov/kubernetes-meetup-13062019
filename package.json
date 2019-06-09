@@ -1,0 +1,23 @@
+{
+  "name": "kubernetes-meetup-13062019",
+  "version": "1.0.0",
+  "description": "This project is intended to demonstrate Kubernetest Hello World deployment with Azure Kubernetes Service. The final result of this excersize is:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serge-sedelnikov/kubernetes-meetup-13062019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serge-sedelnikov/kubernetes-meetup-13062019/issues"
+  },
+  "homepage": "https://github.com/serge-sedelnikov/kubernetes-meetup-13062019#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
