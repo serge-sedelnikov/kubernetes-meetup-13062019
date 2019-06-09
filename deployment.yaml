@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-demo
-          image: sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.0
+          image: sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.1
           resources:
             requests:
               cpu: 70m

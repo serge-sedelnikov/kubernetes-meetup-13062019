@@ -47,7 +47,7 @@ Notice, it exposes ports `3000 80 443` as this port API is running at. In the Ku
 Reporisoty was created in public dockerhub and pushed under the name
 
 ```
-sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.0
+sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.1
 ```
 
 ## Kubectl deployment
@@ -78,3 +78,63 @@ spec:
 `type: LoadBalancer` tells Kubernetes to create a public IP address for this service and expose it to outside world.
 
 `ports` and `selector` would tell to Kubernetes to map port `80` to port `80` for deployment with label `app: api-demo`. Notice this label at the deployment section.
+
+### Obtaining kubectl credentials
+
+Inorder to obtain credentials for Kubernetes cluster, login to Azure
+
+```
+az login
+```
+
+In case of multiple subsctiptions set a defaut one where the kubernetes cluster is deployed.
+
+```
+az account set --subscription <sub-id>
+```
+
+Obtain credentials to kubernetes, they will be saved to `.kube\config` file in `%HOME%` directory.
+
+```
+az aks get-credentials --resource-group KubernetesMeetup13062019 --name kubertenes-meetup-demo
+```
+
+From now on you can use `kubectl` CLI. Try list all services.
+
+```
+kubectl get services
+```
+
+### Deploy
+
+Run
+
+```
+kubectl apply -f deployment.yaml
+```
+
+Once applied and deployed, the public IP address allocated to the API.
+
+Run
+
+```
+kubectl get services
+```
+
+The result would look something similar:
+
+```
+NAME         |TYPE           |CLUSTER-IP    |EXTERNAL-IP     |PORT(S)        |AGE
+|---    ---    ---    ---    ---    ---
+
+api-demo     LoadBalancer   10.0.130.42   40.91.214.244   80:30958/TCP   2m
+kubernetes   ClusterIP      10.0.0.1      <none>          443/TCP        5h
+```
+
+## Kubernetes Web UI Console
+
+In order to access Kubernetes Web UI, after getting credentials, run
+
+```
+az aks browse --resource-group KubernetesMeetup13062019 --name kubertenes-meetup-demo
+```
