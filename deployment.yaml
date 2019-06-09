@@ -38,6 +38,7 @@ metadata:
   labels:
     name: api-demo
 spec:
+  loadBalancerIP: 104.40.142.136
   type: LoadBalancer
   ports:
     - port: 80
