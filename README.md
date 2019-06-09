@@ -30,3 +30,26 @@ npm install
 npm start
 ```
 
+# Dockerizing API
+
+In order to run API in Kubernetes we need to create a docker container image. See `Dockerfile` in the root of the project. Also check `.gockerignore` file.
+
+## Dockerfile
+
+Docker file is a simple as is, take a look at it, it only builds `npm` packages and copies everything that was built into working directory.
+
+Also it runs `"npm run start"` command on start.
+
+Notice, it exposes ports `3000 80 443` as this port API is running at. In the Kubernetes deployment file we set running port to `80` in the environment variable.
+
+> `index.js` file contains the `PORT` environment variable check, if given it uses it.
+
+Reporisoty was created in public dockerhub and pushed under the name
+
+```
+sergeysedelnikovstoraenso/kubernetes-demo-api:1.0.0
+```
+
+## Kubectl deployment
+
+See `deployment.yaml` file for deployment details.
