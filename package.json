@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/serge-sedelnikov/kubernetes-meetup-13062019#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
